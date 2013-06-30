@@ -87,7 +87,7 @@ def __getSecurityCookieValue():
     oParser = cParser()
     aResult = oParser.parse(sHtmlContent, sPattern)
     if aResult[0] == False:
-        return ''
+        return 'abc'
     sScriptFile = URL_MAIN + str(aResult[1][0][0])
     sHashSnippet = str(aResult[1][0][1])+str(aResult[1][0][2])
 
@@ -198,7 +198,7 @@ def __parseMovieResultSite(siteUrl, normalySiteUrl, iPage):
         sSecurityValue = oInputParameterHandler.getValue('securityCookie')
     
 
-    sPattern = '<a class="p1" href="[^"]+" >.*?<img class="large" src="(http://[^"]+)".*?<a href="([^"]+)" id="([^"]+)">([^<]+)<'
+    sPattern = '<a class="p1" href="[^"]+".*?<img class="large" src="(http://[^"]+)".*?<a href="([^"]+)" id="([^"]+)">([^<]+)<'
     #sPattern = 'class="alt1Active".*?<a href="(forumdisplay.php[^"]+)".*?>([^<]+)<.*?(src="([^"]+)|</td>).*?</tr>' #Serien
     # request
     sHtmlContent = __getHtmlContent(sUrl = siteUrl)
