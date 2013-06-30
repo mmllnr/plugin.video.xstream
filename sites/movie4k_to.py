@@ -15,25 +15,25 @@ import logger
 #import xbmc
 #from metahandler import metahandlers
 
-SITE_IDENTIFIER = 'movie2k_to'
-SITE_NAME = 'Movie2k.to'
+SITE_IDENTIFIER = 'movie4k_to'
+SITE_NAME = 'Movie4k.to'
 SITE_ICON = 'movie2k.jpg'
 
-URL_MAIN = 'http://www.movie2k.to/'
+URL_MAIN = 'http://www.movie4k.to/'
 URL_MOVIES = URL_MAIN
-URL_MOVIES_ALL = 'http://www.movie2k.to/movies-all'
-URL_MOVIES_GENRE = 'http://www.movie2k.to/genres-movies.html'
+URL_MOVIES_ALL = 'http://www.movie4k.to/movies-all'
+URL_MOVIES_GENRE = 'http://www.movie4k.to/genres-movies.html'
 
-URL_SERIES = 'http://www.movie2k.to/tvshows_featured.php'
-URL_SERIES_ALL = 'http://www.movie2k.to/tvshows-all'
-URL_SERIES_TOP = 'http://www.movie2k.to/tvshows-top.html'
-URL_SERIES_GENRE = 'http://www.movie2k.to/genres-tvshows.html'
+URL_SERIES = 'http://www.movie4k.to/tvshows_featured.php'
+URL_SERIES_ALL = 'http://www.movie4k.to/tvshows-all'
+URL_SERIES_TOP = 'http://www.movie4k.to/tvshows-top.html'
+URL_SERIES_GENRE = 'http://www.movie4k.to/genres-tvshows.html'
 
-URL_XXX = 'http://www.movie2k.to/xxx-updates.html'
-URL_XXX_ALL = 'http://www.movie2k.to/xxx-all'
-URL_XXX_GENRE = 'http://www.movie2k.to/genres-xxx.html'
+URL_XXX = 'http://www.movie4k.to/xxx-updates.html'
+URL_XXX_ALL = 'http://www.movie4k.to/xxx-all'
+URL_XXX_GENRE = 'http://www.movie4k.to/genres-xxx.html'
 
-URL_SEARCH = 'http://www.movie2k.to/movies.php?list=search'
+URL_SEARCH = 'http://www.movie4k.to/movies.php?list=search'
 
 META = False
 
@@ -91,7 +91,7 @@ def __getHtmlContent(sUrl = None, sSecurityValue = None):
     # Make the request
     oRequest = cRequestHandler(sUrl)
     oRequest.addHeaderEntry('Cookie', sPrefLang+sSecurityValue+adultCookie)
-    #oRequest.addHeaderEntry('Referer', 'http://www.movie2k.to/')
+    #oRequest.addHeaderEntry('Referer', 'http://www.movie4k.to/')
     #oRequest.addHeaderEntry('Accept', '*/*')
     #oRequest.addHeaderEntry('Host', 'movie2k.to')
 
@@ -260,7 +260,7 @@ def showSearch():
 
 def __callSearch(sSearchText):
     # get Security Key
-    tmpUrl = 'http://www.movie2k.to/searchAutoCompleteNew.php?search=the'
+    tmpUrl = 'http://www.movie4k.to/searchAutoCompleteNew.php?search=the'
     oRequest = cRequestHandler(tmpUrl)
     tmpHtml = oRequest.request()
     
@@ -457,10 +457,10 @@ def __parseMovieSimpleList(sUrl, iPage):
 def getTypeAndID(url):    
     #####################################################################
     # Examples:
-    # http://www.movie2k.to/Die-Simpsons-online-serie-656673.html
-    # http://www.movie2k.to/Die-Simpsons-Der-Film-online-film-783507.html
-    # http://www.movie2k.to/The-Simpsons-watch-tvshow-660732.html
-    # http://www.movie2k.to/The-Simpsons-Movie-watch-movie-693640.html
+    # http://www.movie4k.to/Die-Simpsons-online-serie-656673.html
+    # http://www.movie4k.to/Die-Simpsons-Der-Film-online-film-783507.html
+    # http://www.movie4k.to/The-Simpsons-watch-tvshow-660732.html
+    # http://www.movie4k.to/The-Simpsons-Movie-watch-movie-693640.html
     #####################################################################
     sPattern = '([^-]+)-(\d+).html$'
     aResult = cParser().parse(url, sPattern)
@@ -480,9 +480,9 @@ def showFeaturedMovies():
     if (oInputParameterHandler.exist('sUrl')):
         sUrl = oInputParameterHandler.getValue('sUrl')
         sHtmlContent = __getHtmlContent(sUrl = sUrl)
-        sPattern = '<div style="float:left">\s*<a href="([^"]+)".{0,1}><img src="([^"]+)".*?alt="([^"]+)".*?<img src="http://img.movie2k.to/img/(.*?).png".*?IM'+ \
+        sPattern = '<div style="float:left">\s*<a href="([^"]+)".{0,1}><img src="([^"]+)".*?alt="([^"]+)".*?<img src="http://img.movie4k.to/img/(.*?).png".*?IM'+ \
         'DB Rating: <a href="http://www.imdb.de/title/[0-9a-zA-z]+" target="_blank">(.*?)</a>.*?class="info"><STRONG>.*?</STRONG><BR>(.*?)(?:<BR>|</div>)'
-        #'<div style="float:left">\s*<a href="([^"]+)".{0,1}><img src="([^"]+)".*?alt="([^"]+)".*?<img src="http://img.movie2k.to/img/(.*?).png"'
+        #'<div style="float:left">\s*<a href="([^"]+)".{0,1}><img src="([^"]+)".*?alt="([^"]+)".*?<img src="http://img.movie4k.to/img/(.*?).png"'
         aResult = cParser().parse(sHtmlContent, sPattern)
         if (aResult[0] == True):
             oGui = cGui()
@@ -532,7 +532,7 @@ def showFeaturedSeries():
         sPattern = '<div id="maincontenttvshow">(.*?)<BR><BR>'
         aResult = cParser().parse(sHtmlContent,sPattern)
         if aResult[0] == True:
-            sPattern = '<div style="float:left"><a href="([^"]+)"><img src="([^"]+)" border=0.*?title="([^"]+)"></a>.*?<img src="http://img.movie2k.to/img/(.*?).png"'
+            sPattern = '<div style="float:left"><a href="([^"]+)"><img src="([^"]+)" border=0.*?title="([^"]+)"></a>.*?<img src="http://img.movie4k.to/img/(.*?).png"'
             sHtmlContent = aResult[1][0]
             aResult = cParser().parse(sHtmlContent, sPattern)
             if aResult[0] == True:
