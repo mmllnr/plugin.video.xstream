@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.xstream"
+	name="xStream"
+	version="2.0.19"
+	provider-name="Lynx187 (originator: murphy, MaxMustermann)">
+  <requires>
+    <import addon="script.module.urlresolver" version="1.0.7" />
+	<import addon="script.module.t0mm0.common" version="1.1.0" />
+    <import addon="script.module.metahandler" version="1.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de">xStream</summary>
+    <description lang="de">xStream ist ein Addon, welches mit eigenen Plugins erweitert werden kann. Hiermit kann man Filme, Serien, etc. per Stream anschauen</description>
+    <summary lang="en">xStream</summary>
+    <description lang="en">Addon to watch streams from various film an series sites.</description>
+    <platform>all</platform>
+  </extension>
+  <extension point="xbmc.addon.repository"
+    name="xStream Repository">
+    <info>https://content.wuala.com/contents/Lynx187/xStream/addons.xml?dl=1</info>
+    <checksum>http://content.wuala.com/contents/Lynx187/xStream/addons.xml.md5?dl=1</checksum>        
+    <datadir zip="true">http://content.wuala.com/contents/Lynx187/xStream</datadir>
+   </extension>
+</addon>
