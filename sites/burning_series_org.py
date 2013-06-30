@@ -27,7 +27,7 @@ else:
 # Variablen definieren die "global" verwendet werden sollen
 SITE_IDENTIFIER = 'burning_series_org'
 SITE_NAME = 'Burning-Seri.es'
-SITE_ICON = 'burning_series.jpg'
+regexHostsB = '(.*?)'
 
 URL_MAIN = 'http://www.burning-seri.es'
 URL_SERIES = 'http://www.burning-seri.es/serie-alphabet'
@@ -239,7 +239,7 @@ def showHosters():
     if (aResult[0] == True):
         sHtmlContent = aResult[1][0]
 
-        sPattern = '<li><a href="([^"]+)">.*?class="icon ([^"]+)"></span> ([^<]+?)</a>'
+        sPattern = '<li><a.*?href="([^"]+)">.*?class="icon ([^"]+)"></span> ([^<]+?)</a>'
         oParser = cParser()
         aResult = oParser.parse(sHtmlContent, sPattern)
         if (aResult[0] == True):
